@@ -12,6 +12,7 @@ public class AirlineManagementSystemApplication {
 
 	public static void main(String[] args) {
 
+		
 		SpringApplication.run(AirlineManagementSystemApplication.class, args);
 	}
 
