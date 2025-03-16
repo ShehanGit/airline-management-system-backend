@@ -11,9 +11,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class AirlineManagementSystemApplication {
 
 	public static void main(String[] args) {
-		
+
 
 		SpringApplication.run(AirlineManagementSystemApplication.class, args);
 	}
 
+	
 }
