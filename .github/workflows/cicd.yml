@@ -48,8 +48,8 @@ jobs:
 
       - name: Build and push Docker image (Staging)
         run: |
-          docker build -t your-docker-username/airline-management-system:staging .
-          docker push your-docker-username/airline-management-system:staging
+          docker build -t shehan0000/airline-management-system:staging .
+          docker push shehan0000/airline-management-system:staging
 
       - name: Notify on success
         if: success()
@@ -60,8 +60,8 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Staging Build Success - Airline Management System"
-          to: your-email@example.com
-          from: "GitHub Actions <your-email@example.com>"
+          to: your-real-email@gmail.com  # Replace with your actual email
+          from: "GitHub Actions <your-real-email@gmail.com>"  # Replace with your actual email
           body: "Staging build and push completed successfully."
 
       - name: Notify on failure
@@ -73,8 +73,8 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Staging Build Failed - Airline Management System"
-          to: your-email@example.com
-          from: "GitHub Actions <your-email@example.com>"
+          to: your-real-email@gmail.com  # Replace with your actual email
+          from: "GitHub Actions <your-real-email@gmail.com>"  # Replace with your actual email
           body: "Staging build or push failed. Check GitHub Actions logs."
 
   deploy-to-staging:
@@ -89,7 +89,7 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOST} << 'EOF'
-            docker pull your-docker-username/airline-management-system:staging
+            docker pull shehan0000/airline-management-system:staging
             docker stop airline-staging || true
             docker rm airline-staging || true
             docker run -d --name airline-staging \
@@ -97,7 +97,7 @@ jobs:
               -e DB_URL=${{ secrets.DB_URL_STAGING }} \
               -e DB_USERNAME=${{ secrets.DB_USERNAME_STAGING }} \
               -e DB_PASSWORD=${{ secrets.DB_PASSWORD_STAGING }} \
-              your-docker-username/airline-management-system:staging
+              shehan0000/airline-management-system:staging
           EOF
 
   deploy-to-production:
@@ -113,7 +113,7 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOST} << 'EOF'
-            docker pull your-docker-username/airline-management-system:staging
+            docker pull shehan0000/airline-management-system:staging
             docker stop airline-prod || true
             docker rm airline-prod || true
             docker run -d --name airline-prod \
@@ -121,7 +121,7 @@ jobs:
               -e DB_URL=${{ secrets.DB_URL_PROD }} \
               -e DB_USERNAME=${{ secrets.DB_USERNAME_PROD }} \
               -e DB_PASSWORD=${{ secrets.DB_PASSWORD_PROD }} \
-              your-docker-username/airline-management-system:staging
+              shehan0000/airline-management-system:staging
           EOF
 
       - name: Notify on success
@@ -133,8 +133,8 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Production Deploy Success - Airline Management System"
-          to: your-email@example.com
-          from: "GitHub Actions <your-email@example.com>"
+          to: your-real-email@gmail.com  # Replace with your actual email
+          from: "GitHub Actions <your-real-email@gmail.com>"  # Replace with your actual email
           body: "Production deployment completed successfully."
 
       - name: Notify on failure
@@ -146,6 +146,6 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Production Deploy Failed - Airline Management System"
-          to: your-email@example.com
-          from: "GitHub Actions <your-email@example.com>"
+          to: your-real-email@gmail.com  # Replace with your actual email
+          from: "GitHub Actions <your-real-email@gmail.com>"  # Replace with your actual email
           body: "Production deployment failed. Check GitHub Actions logs."
