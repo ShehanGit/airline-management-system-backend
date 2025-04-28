@@ -10,9 +10,9 @@ A Spring Boot RESTful application for airline management, deployed to AWS EC2 vi
 - **Database**: AWS RDS MySQL (`database-1.cpo2ae66yimr.ap-southeast-1.rds.amazonaws.com`) with JPA schema automation.
 - **Security**: JWT authentication for secure API access.
 - **Email Notifications**: Integrated Spring Mail for operational alerts.
-- **RESTful APIs: Comprehensive endpoints for managing aircraft, airports, bookings, customers, flight routes, staff, and users.
-- **Flight Search: Advanced search functionality for flight routes based on origin, destination, passenger count, and flight class.
-- **Shortest Route Calculation: Supports finding the shortest flight routes using distance or other weight types.
+- RESTful APIs: Comprehensive endpoints for managing aircraft, airports, bookings, customers, flight routes, staff, and users.
+- Flight Search: Advanced search functionality for flight routes based on origin, destination, passenger count, and flight class.
+- Shortest Route Calculation: Supports finding the shortest flight routes using distance or other weight types.
 
 
 ## Prerequisites
