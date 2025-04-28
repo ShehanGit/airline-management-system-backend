@@ -63,42 +63,40 @@ A Spring Boot RESTful application for airline management, deployed to AWS EC2 vi
 
    - Airports are nodes, and flight routes are directed edges stored in an adjacency list.
 
-Each edge has weights for distance, cost, and time, allowing flexible optimization.
+   - Each edge has weights for distance, cost, and time, allowing flexible optimization.
 
-The graph is built from the FlightRoute entities retrieved from the database.
+   - The graph is built from the FlightRoute entities retrieved from the database.
 
-### Algorithm Execution:
+- ### Algorithm Execution:
 
-Initialization: Sets the source airport's distance to 0 and others to infinity, using a priority queue to track nodes with the smallest tentative distances.
+   - Initialization: Sets the source airport's distance to 0 and others to infinity, using a priority queue to track nodes with the smallest tentative distances.
 
-Weight Selection: Supports three weight types (DISTANCE, COST, TIME) via the WeightType enum, allowing the algorithm to optimize based on the user's preference.
+   - Weight Selection: Supports three weight types (DISTANCE, COST, TIME) via the WeightType enum, allowing the algorithm to optimize based on the user's preference.
 
-Path Computation: Iteratively selects the node with the smallest distance, updates distances to neighbors, and tracks the previous node for path reconstruction.
+   - Path Computation: Iteratively selects the node with the smallest distance, updates distances to neighbors, and tracks the previous node for path reconstruction.
 
-Path Reconstruction: Builds the shortest path by backtracking from the destination to the source using the previous node map.
+   - Path Reconstruction: Builds the shortest path by backtracking from the destination to the source using the previous node map.
 
-### Implementation Details:
+- ### Implementation Details:
 
-Uses a PriorityQueue for efficient node selection.
+   - Uses a PriorityQueue for efficient node selection.
 
-Handles unidirectional routes (no reverse edges).
+   - Handles unidirectional routes (no reverse edges).
 
-
-
-Returns a list of Airport objects representing the shortest path.
+   -Returns a list of Airport objects representing the shortest path.
 
 ## Benefits
 
 
-Optimized Route Planning: Enables passengers to find the most efficient routes based on distance (shortest path), cost (cheapest path), or time (fastest path).
+- Optimized Route Planning: Enables passengers to find the most efficient routes based on distance (shortest path), cost (cheapest path), or time (fastest path).
 
-Enhanced User Experience: The flight search API (/api/routes/shortest) leverages this algorithm to provide accurate and optimized route suggestions.
+- Enhanced User Experience: The flight search API (/api/routes/shortest) leverages this algorithm to provide accurate and optimized route suggestions.
 
-Operational Efficiency: Helps airline staff plan cost-effective and timely flight schedules.
+- Operational Efficiency: Helps airline staff plan cost-effective and timely flight schedules.
 
-Flexibility: Supports multiple optimization criteria, making it adaptable to various use cases (e.g., budget travelers vs. time-sensitive business travelers).
+- Flexibility: Supports multiple optimization criteria, making it adaptable to various use cases (e.g., budget travelers vs. time-sensitive business travelers).
 
-Scalability: Efficiently handles large airport networks due to the use of a priority queue and adjacency list.
+- Scalability: Efficiently handles large airport networks due to the use of a priority queue and adjacency list.
 
 ## Project Structure
    ```bash
