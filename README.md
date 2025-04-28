@@ -35,3 +35,66 @@ A Spring Boot RESTful application for airline management, deployed to AWS EC2 vi
    spring.datasource.username=<your-username>
    spring.datasource.password=<your-password>
    ```
+3. **Run Locally:**:
+   ```bash
+   mvn clean install
+   ```
+3. **Build the Application:**:
+   ```bash
+   mvn spring-boot:run
+   ```
+4. Dockerize the Application:
+   ```bash
+   docker build -t shehan0000/airline-management-system:staging .
+   ```
+   ```bash
+   docker run -p 8080:8080 shehan0000/airline-management-system:staging
+   ```
+5. Deploy to AWS:
+   - Ensure GitHub Actions workflow is configured in .github/workflows/ci-cd.yml.
+   - Push changes to the main branch for staging deployment or tag a release for production.
+
+## Project Structure
+   ```bash
+   airline-management-system/
+├── src/
+│   ├── main/
+│   │   ├── java/com/airlinemanagementsystem/airline_management_system/
+│   │   │   ├── controller/     
+│   │   │   ├── model/          
+│   │   │   ├── service/        
+│   │   │   ├── repository/     
+│   │   │   ├── user/           
+│   │   │   ├── exception/    
+│   │   ├── resources/
+│   │       ├── application.properties  # Configuration file
+│   ├── test/                  
+├── Dockerfile                  
+├── pom.xml                      
+├── .github/workflows/ci-cd.yml  
+└── README.md                    
+   ```
+
+## Database Configuration
+ ```bash
+   spring.datasource.url=${DB_URL:jdbc:mysql://localhost:3306/airline_management?useSSL=false}
+   spring.datasource.username=${DB_USERNAME:root}
+   spring.datasource.password=${DB_PASSWORD:user}
+   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+   spring.jpa.hibernate.ddl-auto=update
+   server.port=8080
+ ```
+
+## Security
+- JWT Authentication: APIs are secured using JSON Web Tokens. Include the Authorization header with Bearer <token> for protected endpoints.
+- CORS: Cross-Origin Resource Sharing is enabled for specific endpoints (e.g., /customers, /api/routes/search).
+
+## CI/CD Pipeline
+- The GitHub Actions workflow automates:
+- Building and testing the application.
+- Creating and pushing Docker images to Docker Hub.
+- Deploying to AWS EC2 instances for staging (54.179.15.186) and production (52.221.220.162).
+  Configure the workflow in .github/workflows/ci-cd.yml with appropriate AWS credentials and Docker Hub secrets.
+
+## License
+### This project is licensed under the MIT License.
