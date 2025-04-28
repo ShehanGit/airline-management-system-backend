@@ -61,7 +61,7 @@ A Spring Boot RESTful application for airline management, deployed to AWS EC2 vi
 
 - ### Graph Representation:
 
--- Airports are nodes, and flight routes are directed edges stored in an adjacency list.
+   - Airports are nodes, and flight routes are directed edges stored in an adjacency list.
 
 Each edge has weights for distance, cost, and time, allowing flexible optimization.
 
