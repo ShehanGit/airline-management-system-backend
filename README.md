@@ -1,4 +1,4 @@
-# Airline Management System
+# Flight-Reservation-System
 
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.5-brightgreen) ![Docker](https://img.shields.io/badge/Docker-Container-blue) ![AWS](https://img.shields.io/badge/AWS-EC2%20%7C%20RDS-orange) ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-blueviolet)
 
